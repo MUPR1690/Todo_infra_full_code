@@ -5,14 +5,14 @@ trigger:
 pool: Todo infra
 
 stages:
-  - stage: terraform install
+  - stage: terraform_install
     jobs:
       - job: terraform_install
         steps:
         - task: TerraformInstaller@1
           inputs:
             terraformVersion: 'latest'
-  - stage: terraform init
+  - stage: terraform_init
     jobs:
       - job: terrafom_init
         steps:
@@ -25,7 +25,8 @@ stages:
             backendAzureRmStorageAccountName: 'alfaacaunt'
             backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'tf.tfstate'
-  - stage: terraform validate
+            workingDirectory: '$(System.DefaultWorkingDirectory)Enviroment /dev'
+  - stage: terraform_validate
     jobs:
      - job: terraform_validate
        steps:
@@ -33,7 +34,8 @@ stages:
          inputs:
            provider: 'azurerm'
            command: 'validate'
-  - stage: terraform plan
+           workingDirectory: '$(System.DefaultWorkingDirectory)Enviroment /dev'
+  - stage: terraform_plan
     jobs:
       - job: terraform_plan
         steps:
@@ -41,4 +43,4 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            environmentServiceNameAzureRM: 'alfa'
+            workingDirectory: '$(System.DefaultWorkingDirectory)Enviroment /dev'
