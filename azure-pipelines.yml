@@ -25,7 +25,7 @@ stages:
             backendAzureRmStorageAccountName: 'alfaacaunt'
             backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'tf.tfstate'
-            workingDirectory: '$(System.DefaultWorkingDirectory)Enviroment /dev'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
   - stage: terraform_validate
     jobs:
      - job: terraform_validate
@@ -34,7 +34,7 @@ stages:
          inputs:
            provider: 'azurerm'
            command: 'validate'
-           workingDirectory: '$(System.DefaultWorkingDirectory)Enviroment /dev'
+           workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
   - stage: terraform_plan
     jobs:
       - job: terraform_plan
@@ -43,4 +43,4 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            workingDirectory: '$(System.DefaultWorkingDirectory)Enviroment /dev'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
