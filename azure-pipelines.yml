@@ -33,6 +33,7 @@ stages:
        - task: TerraformTask@5
          inputs:
            provider: 'azurerm'
+           customCommand: init
            command: 'validate'
            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
   - stage: terraform_plan
@@ -42,5 +43,6 @@ stages:
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
+            commandOptions: init
             command: 'plan'
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
