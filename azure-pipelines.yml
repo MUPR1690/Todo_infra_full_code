@@ -1,4 +1,3 @@
-
 trigger:
 - main
 
@@ -12,10 +11,21 @@ stages:
         - task: TerraformInstaller@1
           inputs:
             terraformVersion: 'latest'
+
   - stage: terraform_init
     jobs:
-      - job: terrafom_init
+      - job: terraform_init
         steps:
+
+        - task: PowerShell@2
+          displayName: "Clean Terraform local state"
+          inputs:
+            targetType: 'inline'
+            script: |
+              Write-Host "Deleting .terraform folder"
+              Remove-Item -Recurse -Force "$(System.DefaultWorkingDirectory)\Enviroment\dev\.terraform" -ErrorAction SilentlyContinue
+              Remove-Item -Force "$(System.DefaultWorkingDirectory)\Enviroment\dev\.terraform.lock.hcl" -ErrorAction SilentlyContinue
+
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
@@ -23,9 +33,11 @@ stages:
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
             backendAzureRmStorageAccountName: 'todoacco'
-            backendAzureRmContainerName: 'alfaacco'
+            backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'tf.tfstate'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/Enviroment/dev'
+            commandOptions: "-reconfigure"
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+
   - stage: terraform_validate
     jobs:
      - job: terraform_validate
@@ -37,14 +49,17 @@ stages:
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
             backendAzureRmStorageAccountName: 'todoacco'
-            backendAzureRmContainerName: 'alfaacco'
+            backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'tf.tfstate'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/Enviroment/dev'
+            commandOptions: "-reconfigure"
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+
         - task: TerraformTask@5
           inputs:
-           provider: 'azurerm'
-           command: 'validate'
-           workingDirectory: '$(System.DefaultWorkingDirectory)/Enviroment/dev'
+            provider: 'azurerm'
+            command: 'validate'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+
   - stage: terraform_plan
     jobs:
       - job: terraform_plan
@@ -56,14 +71,17 @@ stages:
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
             backendAzureRmStorageAccountName: 'todoacco'
-            backendAzureRmContainerName: 'alfaacco'
+            backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'tf.tfstate'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/Enviroment/dev'
+            commandOptions: "-reconfigure"
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/Enviroment/dev'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+
   - stage: terraform_apply
     jobs:
       - job: terraform_apply
@@ -75,13 +93,14 @@ stages:
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
             backendAzureRmStorageAccountName: 'todoacco'
-            backendAzureRmContainerName: 'alfaacco'
+            backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'tf.tfstate'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/Enviroment/dev'
+            commandOptions: "-reconfigure"
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
             command: 'apply'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/Enviroment/dev'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
             environmentServiceNameAzureRM: 'alfa'
