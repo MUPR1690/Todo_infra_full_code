@@ -80,8 +80,8 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            backendServiceArm: 'alfa'
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+            environmentServiceNameAzureRM: 'alfa'
 
   - stage: terraform_apply
     jobs:
