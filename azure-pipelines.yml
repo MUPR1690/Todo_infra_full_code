@@ -22,8 +22,8 @@ stages:
             command: 'init'
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
-            backendAzureRmStorageAccountName: 'alfaacaunt'
-            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmStorageAccountName: 'todoacco'
+            backendAzureRmContainerName: 'alfaacco'
             backendAzureRmKey: 'tf.tfstate'
             workingDirectory: '$(System.DefaultWorkingDirectory)/Enviroment/dev'
   - stage: terraform_validate
@@ -36,8 +36,8 @@ stages:
             command: 'init'
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
-            backendAzureRmStorageAccountName: 'alfaacaunt'
-            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmStorageAccountName: 'todoacco'
+            backendAzureRmContainerName: 'alfaacco'
             backendAzureRmKey: 'tf.tfstate'
             workingDirectory: '$(System.DefaultWorkingDirectory)/Enviroment/dev'
         - task: TerraformTask@5
@@ -55,8 +55,8 @@ stages:
             command: 'init'
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
-            backendAzureRmStorageAccountName: 'alfaacaunt'
-            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmStorageAccountName: 'todoacco'
+            backendAzureRmContainerName: 'alfaacco'
             backendAzureRmKey: 'tf.tfstate'
             workingDirectory: '$(System.DefaultWorkingDirectory)/Enviroment/dev'
         - task: TerraformTask@5
@@ -74,8 +74,8 @@ stages:
             command: 'init'
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
-            backendAzureRmStorageAccountName: 'alfaacaunt'
-            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmStorageAccountName: 'todoacco'
+            backendAzureRmContainerName: 'alfaacco'
             backendAzureRmKey: 'tf.tfstate'
             workingDirectory: '$(System.DefaultWorkingDirectory)/Enviroment/dev'
 
