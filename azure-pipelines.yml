@@ -80,6 +80,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'plan'
+            backendServiceArm: 'alfa'
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
   - stage: terraform_apply
