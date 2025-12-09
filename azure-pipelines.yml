@@ -16,16 +16,6 @@ stages:
     jobs:
       - job: terraform_init
         steps:
-
-        - task: PowerShell@2
-          displayName: "Clean Terraform local state"
-          inputs:
-            targetType: 'inline'
-            script: |
-              Write-Host "Deleting .terraform folder"
-              Remove-Item -Recurse -Force "$(System.DefaultWorkingDirectory)\Enviroment\dev\.terraform" -ErrorAction SilentlyContinue
-              Remove-Item -Force "$(System.DefaultWorkingDirectory)\Enviroment\dev\.terraform.lock.hcl" -ErrorAction SilentlyContinue
-
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
@@ -104,4 +94,5 @@ stages:
             provider: 'azurerm'
             command: 'apply'
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+            commandOptions: '-auto-approve'
             environmentServiceNameAzureRM: 'alfa'
