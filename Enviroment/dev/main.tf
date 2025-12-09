@@ -31,7 +31,7 @@ module "nic" {
   
 }
 module "vm" {
-    depends_on = [ module.vet ]
+    depends_on = [ module.nic ]
     source = "../../Module/Azurerm_Virtual_Machine"
     vms = var.vms
   
