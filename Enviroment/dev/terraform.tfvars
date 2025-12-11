@@ -29,7 +29,7 @@ database = {
     rg_name       = "mupr13-rg-infra"
     location      = "centralindia"
     database_name = "mupr-sqldb12"
-    server_id     = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr13-rg-infra/providers/Microsoft.Sql/servers/sqlserverinfamupr121"
+    server_id     = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr13-rg-infra/providers/Microsoft.Sql/servers/sqlserverinfamupr12"
     collation     = "SQL_Latin1_General_CP1_CI_AS"
     license_type  = "LicenseIncluded"
   }
@@ -85,7 +85,7 @@ vms = {
     vm_size              = "Standard_B1s"
     admin_username       = "vmadminuser"
     admin_password = "mupuvm@1234"
-    network_interface_id = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr13-rg-infra/providers/Microsoft.Network/networkInterfaces/mupr-nic-1"
+    network_interface_id = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr13-rg-infra/providers/Microsoft.Network/networkInterfaces/mupr1-nic-1"
   },
   "vm3" = {
     vm_name              = "mupr1-vm-backend"
@@ -94,7 +94,7 @@ vms = {
     vm_size              = "Standard_B1s"
     admin_username       = "vmadminuser"
     admin_password = "mupuvm@1234"
-    network_interface_id = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr13-rg-infra/providers/Microsoft.Network/networkInterfaces/mupr-nic-backend"
+    network_interface_id = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr13-rg-infra/providers/Microsoft.Network/networkInterfaces/mupr1-nic-backend"
   }
 }
 
