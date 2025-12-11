@@ -5,8 +5,14 @@ terraform {
       version = "4.53.0"
     }
   }
-  backend "azurerm" { }
+  backend "azurerm" { 
+    resource_group_name  = "alfa_todo"
+    storage_account_name = "todoacco"
+    container_name       = "alfaacco"
+    key                  = "todoapp.terraform.tfstate"
+  }
 }
+
 
 provider "azurerm" {
     features {}
