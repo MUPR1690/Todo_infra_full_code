@@ -10,7 +10,7 @@ terraform {
     storage_account_name = "todoacco"
     container_name       = "alfaacco"
     key                  = "state.tfstate"
-  }
+   }
   }
 provider "azurerm" {
     features {}
