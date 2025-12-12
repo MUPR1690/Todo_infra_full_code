@@ -25,7 +25,6 @@ stages:
             backendAzureRmStorageAccountName: 'todoacco'
             backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'tf.tfstate'
-            commandOptions: "-reconfigure"
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
   - stage: terraform_validate
@@ -41,7 +40,6 @@ stages:
             backendAzureRmStorageAccountName: 'todoacco'
             backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'tf.tfstate'
-            commandOptions: "-reconfigure"
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
         - task: TerraformTask@5
@@ -63,7 +61,6 @@ stages:
             backendAzureRmStorageAccountName: 'todoacco'
             backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'tf.tfstate'
-            commandOptions: "-reconfigure"
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
         - task: TerraformTask@5
@@ -86,13 +83,12 @@ stages:
             backendAzureRmStorageAccountName: 'todoacco'
             backendAzureRmContainerName: 'tfstate'
             backendAzureRmKey: 'tf.tfstate'
-            commandOptions: "-reconfigure"
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
-            command: 'destroy'
+            command: 'apply'
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
             commandOptions: '-auto-approve'
             environmentServiceNameAzureRM: 'alfa'
