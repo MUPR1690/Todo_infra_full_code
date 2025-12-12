@@ -23,7 +23,7 @@ stages:
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
             backendAzureRmStorageAccountName: 'todoacco'
-            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmContainerName: 'alfaacco'
             backendAzureRmKey: 'tf.tfstate'
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
@@ -38,7 +38,7 @@ stages:
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
             backendAzureRmStorageAccountName: 'todoacco'
-            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmContainerName: 'alfaacco'
             backendAzureRmKey: 'tf.tfstate'
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
@@ -59,7 +59,7 @@ stages:
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
             backendAzureRmStorageAccountName: 'todoacco'
-            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmContainerName: 'alfaacco'
             backendAzureRmKey: 'tf.tfstate'
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
@@ -81,7 +81,7 @@ stages:
             backendServiceArm: 'alfa'
             backendAzureRmResourceGroupName: 'alfa_todo'
             backendAzureRmStorageAccountName: 'todoacco'
-            backendAzureRmContainerName: 'tfstate'
+            backendAzureRmContainerName: 'alfaacco'
             backendAzureRmKey: 'tf.tfstate'
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
