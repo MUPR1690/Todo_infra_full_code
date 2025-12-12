@@ -92,7 +92,7 @@ stages:
         - task: TerraformTask@5
           inputs:
             provider: 'azurerm'
-            command: 'apply'
+            command: 'destroy'
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
             commandOptions: '-auto-approve'
             environmentServiceNameAzureRM: 'alfa'
