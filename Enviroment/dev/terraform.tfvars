@@ -1,13 +1,13 @@
 infrarg = {
   "rg" = {
-    rg_name  = "mupr13-rg-infra"
+    rg_name  = "mupr1-rg-infra"
     location = "centralindia"
     
   }
 }
 infranet = {
   "vnet" = {
-    rg_name         = "mupr13-rg-infra"
+    rg_name         = "mupr1-rg-infra"
     location        = "centralindia"
     vnet_name       = "mupr-vnet"
     address_space   = ["10.0.0.0/16"]
@@ -26,17 +26,17 @@ subnet_name = [
 }
 database = {
   "sqldb" = {
-    rg_name       = "mupr13-rg-infra"
+    rg_name       = "mupr1-rg-infra"
     location      = "centralindia"
     database_name = "mupr-sqldb12"
-    server_id     = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr13-rg-infra/providers/Microsoft.Sql/servers/sqlserverinfamupr12"
+    server_id     = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr1-rg-infra/providers/Microsoft.Sql/servers/sqlserverinfamupr12"
     collation     = "SQL_Latin1_General_CP1_CI_AS"
     license_type  = "LicenseIncluded"
   }
 }
 server = {
   "sqlserver" = {
-    rg_name        = "mupr13-rg-infra"
+    rg_name        = "mupr1-rg-infra"
     location       = "centralindia"
     server_name    = "sqlserverinfamupr12"
     version        = "12.0"
@@ -46,13 +46,13 @@ server = {
 }
 pip = {
   "publicip" = {
-    rg_name           = "mupr13-rg-infra"
+    rg_name           = "mupr1-rg-infra"
     location          = "centralindia"
     public_ip_name    = "mupr1-public-ip-frontend"
     allocation_method = "Static"
   },
   "publicip1" = {
-    rg_name           = "mupr13-rg-infra"
+    rg_name           = "mupr1-rg-infra"
     location          = "centralindia"
     public_ip_name    = "mupr1-public-ip-backend"
     allocation_method = "Static"
@@ -63,38 +63,38 @@ nic = {
   "nic1" = {
     nic_name             = "mupr1-nic-1"
     location             = "centralindia"
-    rg_name              = "mupr13-rg-infra"
+    rg_name              = "mupr1-rg-infra"
     ip_config_name       = "testconfiguration1"
-    subnet_id            = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr13-rg-infra/providers/Microsoft.Network/virtualNetworks/mupr-vnet/subnets/frontend-subnet"
+    subnet_id            = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr1-rg-infra/providers/Microsoft.Network/virtualNetworks/mupr-vnet/subnets/frontend-subnet"
     private_ip_allocation = "Dynamic"
   },
   "nic2" = {
     nic_name             = "mupr1-nic-backend"
     location             = "centralindia"
-    rg_name              = "mupr13-rg-infra"
+    rg_name              = "mupr1-rg-infra"
     ip_config_name       = "testconfiguration1"
-    subnet_id            = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr13-rg-infra/providers/Microsoft.Network/virtualNetworks/mupr-vnet/subnets/backend-subnet"
+    subnet_id            = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr1-rg-infra/providers/Microsoft.Network/virtualNetworks/mupr-vnet/subnets/backend-subnet"
     private_ip_allocation = "Dynamic"
   }
 }
 vms = {
   "vm1" = {
     vm_name              = "mupr1-vm-frontend"
-    rg_name              = "mupr13-rg-infra"
+    rg_name              = "mupr1-rg-infra"
     location             = "centralindia"
     vm_size              = "Standard_B1s"
     admin_username       = "vmadminuser"
     admin_password = "mupuvm@1234"
-    network_interface_id = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr13-rg-infra/providers/Microsoft.Network/networkInterfaces/mupr1-nic-1"
+    network_interface_id = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr1-rg-infra/providers/Microsoft.Network/networkInterfaces/mupr1-nic-1"
   },
   "vm3" = {
     vm_name              = "mupr1-vm-backend"
-    rg_name              = "mupr13-rg-infra"
+    rg_name              = "mupr1-rg-infra"
     location             = "centralindia"
     vm_size              = "Standard_B1s"
     admin_username       = "vmadminuser"
     admin_password = "mupuvm@1234"
-    network_interface_id = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr13-rg-infra/providers/Microsoft.Network/networkInterfaces/mupr1-nic-backend"
+    network_interface_id = "/subscriptions/12070104-5366-47e7-ae69-d5a2bd98c79e/resourceGroups/mupr1-rg-infra/providers/Microsoft.Network/networkInterfaces/mupr1-nic-backend"
   }
 }
 
@@ -102,11 +102,11 @@ nsg = [
   {
     name     = "mpnsg1-frontend"
     location = "centralindia"
-    rg_name  = "mupr13-rg-infra"
+    rg_name  = "mupr1-rg-infra"
   },
   {
     name     = "mpnsg1-backend"
     location = "centralindia"
-    rg_name  = "mupr13-rg-infra"
+    rg_name  = "mupr1-rg-infra"
   }
 ]
