@@ -28,6 +28,16 @@ stages:
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
   - stage: scan_code
     jobs:
+     - job: 
+       steps:
+       - task: SonarQubePrepare@8
+         inputs:
+           scannerMode: 'cli'
+           cliScannerVersion: 'CLI'
+           configMode: 'manual'
+           cliProjectKey: 'todoacco'
+           cliProjectName: 'alfaacco'
+           cliSources: '.$(System.DefaultWorkingDirectory)\Enviroment\dev'
      - job: scan_code
        steps:
        - task: tfsec@1
