@@ -39,8 +39,10 @@ stages:
          inputs:
            targetType: 'inline'
            script: 'tflint'
+           errorActionPreference: 'continue'
            continueOnError: 'true'
-           workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+           dir: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+
   - stage: terraform_validate
     jobs:
      - job: terraform_validate
