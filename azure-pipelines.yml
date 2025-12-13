@@ -26,7 +26,19 @@ stages:
             backendAzureRmContainerName: 'alfaacco'
             backendAzureRmKey: 'tf.tfstate'
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
-
+  - stage: scan_code
+    jobs:
+     - job: scan_code
+       steps:
+       - task: tfsec@1
+         inputs:
+           version: 'v1.26.0'
+           dir: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+       - task: PowerShell@2
+         inputs:
+           targetType: 'inline'
+           script: 'tflint'
+           workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
   - stage: terraform_validate
     jobs:
      - job: terraform_validate
