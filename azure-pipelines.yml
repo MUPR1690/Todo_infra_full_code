@@ -34,7 +34,6 @@ stages:
          inputs:
            SonarQube: 'SonarQube'
            scannerMode: 'cli'
-           cliScannerVersion: 'CLI'
            configMode: 'manual'
            cliProjectKey: 'todoinfra'
            cliProjectName: 'todoinfra'
