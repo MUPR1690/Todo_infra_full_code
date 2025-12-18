@@ -96,10 +96,16 @@ stages:
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
             environmentServiceNameAzureRM: 'alfa'
         - task: InfracostSetup@2
+          displayName: "Setup Infracost"
           inputs:
             apiKey: 'ico-IIsbb9sbi8YnUl3XKg0x9Q0jbB5oBPIp'
             version: '0.10.x'
 
+        - script: |
+            infracost breakdown \
+            --path=terraform \
+            --format=table
+          displayName: "Infra Cost Estimation"
   # - stage: terraform_apply
   #   jobs:
   #     - job: terraform_apply
