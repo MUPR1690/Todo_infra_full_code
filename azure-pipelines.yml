@@ -4,28 +4,28 @@ trigger:
 pool: Todo infra
 
 stages:
-  # - stage: terraform_install
-  #   jobs:
-  #     - job: terraform_install
-  #       steps:
-  #       - task: TerraformInstaller@1
-  #         inputs:
-  #           terraformVersion: 'latest'
+  - stage: terraform_install
+    jobs:
+      - job: terraform_install
+        steps:
+        - task: TerraformInstaller@1
+          inputs:
+            terraformVersion: 'latest'
 
-  # - stage: terraform_init
-  #   jobs:
-  #     - job: terraform_init
-        # steps:
-        # - task: TerraformTask@5
-        #   inputs:
-        #     provider: 'azurerm'
-        #     command: 'init'
-        #     backendServiceArm: 'alfa'
-        #     backendAzureRmResourceGroupName: 'alfa_todo'
-        #     backendAzureRmStorageAccountName: 'todoacco'
-        #     backendAzureRmContainerName: 'alfaacco'
-        #     backendAzureRmKey: 'tf.tfstate'
-        #     workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+  - stage: terraform_init
+    jobs:
+      - job: terraform_init
+        steps:
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'alfa'
+            backendAzureRmResourceGroupName: 'alfa_todo'
+            backendAzureRmStorageAccountName: 'todoacco'
+            backendAzureRmContainerName: 'alfaacco'
+            backendAzureRmKey: 'tf.tfstate'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
   - stage: scan_code
     jobs:
      - job: 
@@ -53,48 +53,52 @@ stages:
            continueOnError: 'true'
            dir: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
-  # - stage: terraform_validate
-  #   jobs:
-  #    - job: terraform_validate
-  #      steps:
-  #       - task: TerraformTask@5
-  #         inputs:
-  #           provider: 'azurerm'
-  #           command: 'init'
-  #           backendServiceArm: 'alfa'
-  #           backendAzureRmResourceGroupName: 'alfa_todo'
-  #           backendAzureRmStorageAccountName: 'todoacco'
-  #           backendAzureRmContainerName: 'alfaacco'
-  #           backendAzureRmKey: 'tf.tfstate'
-  #           workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+  - stage: terraform_validate
+    jobs:
+     - job: terraform_validate
+       steps:
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'alfa'
+            backendAzureRmResourceGroupName: 'alfa_todo'
+            backendAzureRmStorageAccountName: 'todoacco'
+            backendAzureRmContainerName: 'alfaacco'
+            backendAzureRmKey: 'tf.tfstate'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
-  #       - task: TerraformTask@5
-  #         inputs:
-  #           provider: 'azurerm'
-  #           command: 'validate'
-  #           workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'validate'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
-  # - stage: terraform_plan
-  #   jobs:
-  #     - job: terraform_plan
-  #       steps:
-  #       - task: TerraformTask@5
-  #         inputs:
-  #           provider: 'azurerm'
-  #           command: 'init'
-  #           backendServiceArm: 'alfa'
-  #           backendAzureRmResourceGroupName: 'alfa_todo'
-  #           backendAzureRmStorageAccountName: 'todoacco'
-  #           backendAzureRmContainerName: 'alfaacco'
-  #           backendAzureRmKey: 'tf.tfstate'
-  #           workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+  - stage: terraform_plan
+    jobs:
+      - job: terraform_plan
+        steps:
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'alfa'
+            backendAzureRmResourceGroupName: 'alfa_todo'
+            backendAzureRmStorageAccountName: 'todoacco'
+            backendAzureRmContainerName: 'alfaacco'
+            backendAzureRmKey: 'tf.tfstate'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
-  #       - task: TerraformTask@5
-  #         inputs:
-  #           provider: 'azurerm'
-  #           command: 'plan'
-  #           workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
-  #           environmentServiceNameAzureRM: 'alfa'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+            environmentServiceNameAzureRM: 'alfa'
+        - task: InfracostSetup@2
+          inputs:
+            apiKey: 'ico-IIsbb9sbi8YnUl3XKg0x9Q0jbB5oBPIp'
+            version: '0.10.x'
 
   # - stage: terraform_apply
   #   jobs:
