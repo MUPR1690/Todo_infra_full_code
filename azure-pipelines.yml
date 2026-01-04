@@ -28,16 +28,6 @@ stages:
             workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
   - stage: scan_code
     jobs:
-    #  - job: 
-    #    steps:
-    #   #  - task: SonarQubePrepare@8
-    #   #    inputs:
-    #   #      SonarQube: 'SonarQube'
-    #   #      scannerMode: 'cli'
-    #   #      configMode: 'manual'
-    #   #      cliProjectKey: 'todoinfra'
-    #   #      cliProjectName: 'todoinfra'
-    #   #      cliSources: '.'
      - job: scan_code
        steps:
        - task: tfsec@1
@@ -106,25 +96,25 @@ stages:
             --path=terraform \
             --format=table
           displayName: "Infra Cost Estimation"
-  # - stage: terraform_apply
-  #   jobs:
-  #     - job: terraform_apply
-  #       steps:
-  #       - task: TerraformTask@5
-  #         inputs:
-  #           provider: 'azurerm'
-  #           command: 'init'
-  #           backendServiceArm: 'alfa'
-  #           backendAzureRmResourceGroupName: 'alfa_todo'
-  #           backendAzureRmStorageAccountName: 'todoacco'
-  #           backendAzureRmContainerName: 'alfaacco'
-  #           backendAzureRmKey: 'tf.tfstate'
-  #           workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+  - stage: terraform_apply
+    jobs:
+      - job: terraform_apply
+        steps:
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            backendServiceArm: 'alfa'
+            backendAzureRmResourceGroupName: 'alfa_todo'
+            backendAzureRmStorageAccountName: 'todoacco'
+            backendAzureRmContainerName: 'alfaacco'
+            backendAzureRmKey: 'tf.tfstate'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
 
-  #       - task: TerraformTask@5
-  #         inputs:
-  #           provider: 'azurerm'
-  #           command: 'apply'
-  #           workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
-  #           commandOptions: '-auto-approve'
-  #           environmentServiceNameAzureRM: 'alfa'
+        - task: TerraformTask@5
+          inputs:
+            provider: 'azurerm'
+            command: 'apply'
+            workingDirectory: '$(System.DefaultWorkingDirectory)\Enviroment\dev'
+            commandOptions: '-auto-approve'
+            environmentServiceNameAzureRM: 'alfa'
